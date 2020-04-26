@@ -24,7 +24,7 @@ public class DevBootstrap implements CommandLineRunner {
   private PublisherRepository publisherRepository;
 
   @Override
-  public void run(String... args) throws Exception {
+  public void run(String... args) {
 
     Publisher publisher = new Publisher();
     publisher.setName("Editora Março");
@@ -35,7 +35,7 @@ public class DevBootstrap implements CommandLineRunner {
     System.out.println("Publishers count: " + publisherRepository.count());
 
     Author eric = new Author("Eric", "Evans");
-    Book ddd = new Book("Domain Driven Design", "123123");
+    Book ddd = new Book("Domain Driven Design", "123123", publisher);
     eric.getBooks().add(ddd);
     ddd.getAuthors().add(eric);
 
@@ -43,7 +43,7 @@ public class DevBootstrap implements CommandLineRunner {
     bookRepository.save(ddd);
 
     Author rod = new Author("Rod", "Johnson");
-    Book noEJB = new Book("J2EE Development without EJB", "3939459459");
+    Book noEJB = new Book("J2EE Development without EJB", "3939459459", publisher);
     rod.getBooks().add(noEJB);
     noEJB.getAuthors().add(rod);
 
